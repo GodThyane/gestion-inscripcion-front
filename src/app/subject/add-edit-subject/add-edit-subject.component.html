@@ -1,0 +1,84 @@
+<div class="container">
+<h1 mat-dialog-title>{{title}}</h1>
+<form [formGroup]="subjectForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre de la materia" [formControl]="subjectForm.controls.SubjectName"
+             required>
+      <mat-error *ngIf="subjectForm.controls.SubjectName.invalid">Debes llenar este campo</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" color="accent">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput placeholder="Descripción de la materia" [formControl]="subjectForm.controls.SubjectDescription"
+                required>
+      </textarea>
+      <mat-error *ngIf="subjectForm.controls.SubjectDescription.invalid">Debes llenar este campo</mat-error>
+    </mat-form-field>
+
+    <div class="grid-1-2">
+      <div>
+        <mat-label>Hora de entrada</mat-label>
+        <div class="d-time">
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Hora</mat-label>
+            <mat-select [formControl]="hourInit">
+              <mat-option [value]="hi" *ngFor="let hi of hours">{{hi}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          :
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Minuto</mat-label>
+            <mat-select [formControl]="minuteInit">
+              <mat-option [value]="mi" *ngFor="let mi of minutes">{{mi}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Horario</mat-label>
+            <mat-select [formControl]="scheduleInit">
+              <mat-option value="AM">AM</mat-option>
+              <mat-option value="PM">PM</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <mat-label>Hora de salida</mat-label>
+        <div class="d-time">
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Hora</mat-label>
+            <mat-select [formControl]="hourFinish">
+              <mat-option [value]="hi" *ngFor="let hi of hours">{{hi}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          :
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Minuto</mat-label>
+            <mat-select [formControl]="minuteFinish">
+              <mat-option [value]="mi" *ngFor="let mi of minutes">{{mi}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" color="accent">
+            <mat-label>Horario</mat-label>
+            <mat-select [formControl]="scheduleFinish">
+              <mat-option value="AM">AM</mat-option>
+              <mat-option value="PM">PM</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div mat-dialog-actions style="float: right">
+    <button mat-button mat-dialog-close>Cerrar</button>
+    <button mat-button color="accent" (click)="addSubject()" *ngIf="option==='add'" [disabled]="!subjectForm.valid">
+      Agregar
+    </button>
+    <button mat-button color="accent" (click)="editSubject()" *ngIf="option==='edit'" [disabled]="!subjectForm.valid">
+      Editar
+    </button>
+  </div>
+</form>
+</div>

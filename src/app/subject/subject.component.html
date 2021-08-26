@@ -1,0 +1,9 @@
+<div class="f-start-between">
+  <h1>Materias</h1>
+  <button mat-raised-button color="primary" (click)="openDialog()">Agregar materias</button>
+</div>
+<app-table-sorting [elements]="subjects"
+                   (openDialog)="openDialog($event)"
+                   (remove)="deleteSubject($event)"
+                   [columns]="columns"
+                   *ngIf="subjects.length > 0"></app-table-sorting>

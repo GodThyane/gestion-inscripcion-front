@@ -1,0 +1,38 @@
+.mat-form-field {
+  width: 100%;
+  margin-top: .5rem;
+}
+
+.d-time {
+  display: flex;
+  align-items: center;
+  margin-top: .5rem;
+}
+
+.d-time mat-form-field {
+  margin: 0 .3rem;
+  max-width: 5rem;
+}
+
+
+.grid-1-2 {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+
+  .d-time{
+    width: 100%;
+  }
+
+  .d-time mat-form-field {
+    max-width: 8rem;
+  }
+
+  .grid-1-2 {
+    grid-template-columns: 1fr;
+  }
+}

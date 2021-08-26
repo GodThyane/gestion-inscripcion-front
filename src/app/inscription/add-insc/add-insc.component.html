@@ -1,0 +1,77 @@
+<div class="example-container mat-elevation-z8" style="width: 1000px">
+  <table mat-table [dataSource]="datas" style="width: 100%" *ngIf="data.isStudent">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Código. </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectCode}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectName}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="desc">
+      <th mat-header-cell *matHeaderCellDef> Descripción </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectDescription}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="init">
+      <th mat-header-cell *matHeaderCellDef> Hora de inicio </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectInitHour | date:'shortTime'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="finish">
+      <th mat-header-cell *matHeaderCellDef> Hora de salida </th>
+      <td mat-cell *matCellDef="let element"> {{element.SubjectFinishHour | date:'shortTime'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inscription">
+      <th mat-header-cell *matHeaderCellDef> Inscripción </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="accent" (click)="inscription(element)">Inscribir
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsSubject; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsSubject;"></tr>
+  </table>
+  <table mat-table [dataSource]="datas" style="width: 100%" *ngIf="!data.isStudent">
+
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Código. </th>
+      <td mat-cell *matCellDef="let element"> {{element.StudentCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Identificación </th>
+      <td mat-cell *matCellDef="let element"> {{element.StudentId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.StudentFirstName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef> Apellido </th>
+      <td mat-cell *matCellDef="let element"> {{element.StudentLastName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="inscription">
+      <th mat-header-cell *matHeaderCellDef> Inscripción </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="accent" (click)="inscription(element)">Inscribir
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsStudent; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsStudent;"></tr>
+  </table>
+</div>

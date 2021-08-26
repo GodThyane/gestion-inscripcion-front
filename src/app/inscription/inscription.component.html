@@ -1,0 +1,6 @@
+<div class="f-start-between">
+  <h1>Inscripciones</h1>
+</div>
+<app-table-sorting [elements]="inscriptions"
+                   [columns]="columns"
+                   *ngIf="inscriptions.length > 0"></app-table-sorting>
